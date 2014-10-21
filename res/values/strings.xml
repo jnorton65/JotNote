@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">QuickNotes</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="btn_new_note_text">New</string>
+	<string name="btn_open_note_text">Open</string>
+	
+	<string name="et_note_text_hint">Write Note&#8230;</string>
+	<string name="et_note_title_hint">Write Title&#8230;</string>
+	<string name="itm_new_note_text">New Note</string>
+	<string name="itm_new_note_text_condensed">New</string>
+
+	<string name="undo_delete_text">Note deleted. Undo?</string>
+</resources>
