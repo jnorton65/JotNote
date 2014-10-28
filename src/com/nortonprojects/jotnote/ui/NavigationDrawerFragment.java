@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.nortonprojects.quicknotes.R;
@@ -54,7 +56,9 @@ public class NavigationDrawerFragment extends Fragment
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerListView;
+	private ListView mDrawerTopListView;
+	private ListView mDrawerBottomListView;
+	private LinearLayout mDrawerLinearLayout;
 	private View mFragmentContainerView;
 
 	private int mCurrentSelectedPosition = 0;
@@ -139,8 +143,9 @@ public class NavigationDrawerFragment extends Fragment
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState)
 	{
-		mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		mDrawerLinearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+		mDrawerTopListView = (ListView) mDrawerLinearLayout.findViewById(R.id.navigation_drawer_top_list);
+		mDrawerTopListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
 			@Override
 			public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id)
@@ -148,10 +153,35 @@ public class NavigationDrawerFragment extends Fragment
 				selectItem(position);
 			}
 		});
-		mDrawerListView.setAdapter(new ArrayAdapter<String>(getActionBar().getThemedContext(), android.R.layout.simple_list_item_activated_1,
+		mDrawerTopListView.setAdapter(new ArrayAdapter<String>(getActionBar().getThemedContext(), android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, new String[] { "Compose Note", "Load Note" }));
-		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-		return mDrawerListView;
+
+		mDrawerBottomListView = (ListView) mDrawerLinearLayout.findViewById(R.id.navigation_drawer_bottom_list);
+		mDrawerBottomListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id)
+			{
+				selectItem(position + mDrawerTopListView.getCount());
+			}
+		});
+		mDrawerBottomListView.setAdapter(new ArrayAdapter<String>(getActionBar().getThemedContext(), android.R.layout.simple_list_item_activated_1,
+				android.R.id.text1, new String[] { "Settings" }));
+
+		mDrawerTopListView.setItemChecked(mCurrentSelectedPosition, false);
+
+		final TypedValue a = new TypedValue();
+		getActivity().getTheme().resolveAttribute(android.R.attr.windowBackground, a, true);
+		if (a.type >= TypedValue.TYPE_FIRST_COLOR_INT && a.type <= TypedValue.TYPE_LAST_COLOR_INT)
+		{
+			mDrawerLinearLayout.setBackgroundColor(a.data);
+		}
+		else
+		{
+			mDrawerLinearLayout.setBackgroundResource(a.resourceId);
+		}
+
+		return mDrawerLinearLayout;
 	}
 
 	@Override
@@ -181,12 +211,20 @@ public class NavigationDrawerFragment extends Fragment
 
 	public void setSelectedItem(final int position)
 	{
-		if (mDrawerListView != null && position < mDrawerListView.getCount())
+		if (mDrawerTopListView != null && position < mDrawerTopListView.getCount())
 		{
 			mCurrentSelectedPosition = position;
-			if (mDrawerListView != null)
+			if (mDrawerTopListView != null)
 			{
-				mDrawerListView.setItemChecked(position, true);
+				mDrawerTopListView.setItemChecked(position, false);
+			}
+		}
+		else if (mDrawerTopListView != null && position - mDrawerTopListView.getCount() < mDrawerBottomListView.getCount())
+		{
+			mCurrentSelectedPosition = position;
+			if (mDrawerBottomListView != null)
+			{
+				mDrawerBottomListView.setItemChecked(position - mDrawerTopListView.getCount(), false);
 			}
 		}
 	}
@@ -296,9 +334,13 @@ public class NavigationDrawerFragment extends Fragment
 	{
 
 		mCurrentSelectedPosition = position;
-		if (mDrawerListView != null)
+		if (mDrawerTopListView != null)
 		{
-			mDrawerListView.setItemChecked(position, true);
+			mDrawerTopListView.setItemChecked(position, false);
+		}
+		if (mDrawerBottomListView != null)
+		{
+			mDrawerBottomListView.setItemChecked(position, false);
 		}
 		if (mDrawerLayout != null)
 		{

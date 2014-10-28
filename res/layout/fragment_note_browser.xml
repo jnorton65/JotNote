@@ -6,7 +6,6 @@
     <ListView 
     android:id="@+id/lv_note_list"
     android:layout_height="match_parent"
-	android:background="@android:color/darker_gray"
     android:choiceMode="singleChoice"
     android:layout_width="match_parent"
   	android:divider="@android:color/transparent"

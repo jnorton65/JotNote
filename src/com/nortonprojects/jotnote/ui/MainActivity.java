@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.nortonprojects.jotnote.bl.JotNotesManager;
 import com.nortonprojects.quicknotes.R;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks
@@ -29,11 +30,15 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 	public static final String NOTE_FRAGMENT_TAG = "NOTE_FRAGMENT";
 
+	public static final String SETTINGS_FRAGMENT_TAG = "SETTINGS_FRAGMENT";
+
 	public static final String NOTE_BROWSER_FRAGMENT_TAG = "NOTE_BROWSER_FRAGMENT";
 
 	public static final String NOTE_FRAGMENT_TITLE = "Compose Note";
 
 	public static final String NOTE_BROWSER_FRAGMENT_TITLE = "Load Note";
+
+	public static final String SETTINGS_FRAGMENT_TITLE = "Settings";
 
 	public static final String NOTE_FRAGMENT_ID = "NOTE_ID";
 
@@ -45,6 +50,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 	public static final int NOTE_FRAGMENT_POSITION = 0;
 	public static final int NOTE_BROWSER_FRAGMENT_POSITION = 1;
+	public static final int SETTINGS_FRAGMENT_POSITION = 2;
 
 	private static final String CURRENT_FRAGMENT_TAG = "CURRENT_FRAGMENT_TAG";
 
@@ -100,6 +106,12 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 					changeFragment(NoteBrowserFragment.newInstance(), NOTE_BROWSER_FRAGMENT_TAG, NOTE_BROWSER_FRAGMENT_TITLE, NOTE_BROWSER_FRAGMENT_POSITION);
 				}
 				break;
+			case 2:
+				if (mCurrentFragmentTag == null || !mCurrentFragmentTag.equals(SETTINGS_FRAGMENT_TAG))
+				{
+					changeFragment(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG, SETTINGS_FRAGMENT_TITLE, SETTINGS_FRAGMENT_POSITION);
+				}
+				break;
 		}
 
 		getFragmentManager();
@@ -146,6 +158,8 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{
+		final JotNotesManager manager = new JotNotesManager(this);
+		manager.setTheme();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 

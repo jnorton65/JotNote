@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.nortonprojects.jotnote.bo.NoteInfo;
+import com.nortonprojects.jotnote.ui.MainActivity;
 import com.nortonprojects.quicknotes.R;
 
 public class NoteListAdapter extends BaseAdapter
@@ -86,6 +87,17 @@ public class NoteListAdapter extends BaseAdapter
 		if (convertView == null)
 		{
 			convertView = ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.note_list_item, parent, false);
+
+			final JotNotesManager manager = new JotNotesManager((MainActivity) convertView.getContext());
+
+			if (manager.getTheme() == android.R.style.Theme_DeviceDefault)
+			{
+				convertView.setBackgroundResource(R.drawable.note_list_item_background_dark);
+			}
+			else
+			{
+				convertView.setBackgroundResource(R.drawable.note_list_item_background_light);
+			}
 		}
 
 		final TextView title = (TextView) convertView.findViewById(R.id.tv_note_title);

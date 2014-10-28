@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal"
+        android:textSize="32sp"
+        android:text="@string/tv_theme_text"/>
+    
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/btn_theme_dark"
+        android:text="@string/btn_theme_dark_text" />
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/btn_theme_light"
+        android:text="@string/btn_theme_light_text" />
+
+</LinearLayout>

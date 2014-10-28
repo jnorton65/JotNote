@@ -13,4 +13,8 @@
 	<string name="itm_new_note_text_condensed">New</string>
 
 	<string name="undo_delete_text">Note deleted. Undo?</string>
+	
+	<string name="btn_theme_light_text">Light</string>
+	<string name="btn_theme_dark_text">Dark</string>
+	<string name="tv_theme_text">Set Theme:</string>
 </resources>

@@ -6,6 +6,7 @@ import android.app.Fragment;
 
 import com.nortonprojects.jotnote.bo.NoteInfo;
 import com.nortonprojects.jotnote.pl.DBAdapter;
+import com.nortonprojects.jotnote.pl.SettingsUtil;
 import com.nortonprojects.jotnote.ui.MainActivity;
 import com.nortonprojects.jotnote.ui.NoteFragment;
 
@@ -30,6 +31,13 @@ public class JotNotesManager
 		mPendingDelete = info;
 	}
 
+	public void changeTheme(final int id)
+	{
+		SettingsUtil.setThemeId(mActivity, id);
+
+		mActivity.recreate();
+	}
+
 	public void executeDelete()
 	{
 		if (mPendingDelete != null)
@@ -51,6 +59,11 @@ public class JotNotesManager
 	public NoteInfo getPendingDelete()
 	{
 		return mPendingDelete;
+	}
+
+	public int getTheme()
+	{
+		return SettingsUtil.getThemeId(mActivity);
 	}
 
 	public void loadNote(final NoteInfo toLoad)
@@ -81,6 +94,11 @@ public class JotNotesManager
 	public void setCurrentNote(final NoteInfo toSet)
 	{
 		mCurrentNote = toSet;
+	}
+
+	public void setTheme()
+	{
+		mActivity.setTheme(SettingsUtil.getThemeId(mActivity));
 	}
 
 	public void updateCurrentNote(final String title, final String note)
