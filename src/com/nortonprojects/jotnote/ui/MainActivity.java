@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nortonprojects.jotnote.bl.JotNotesManager;
-import com.nortonprojects.quicknotes.R;
+import com.nortonprojects.jotnote.R;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks
 {

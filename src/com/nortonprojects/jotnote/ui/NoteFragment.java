@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 import com.nortonprojects.jotnote.bl.JotNotesManager;
 import com.nortonprojects.jotnote.bo.NoteInfo;
-import com.nortonprojects.quicknotes.R;
+import com.nortonprojects.jotnote.R;
 
 public class NoteFragment extends Fragment
 {

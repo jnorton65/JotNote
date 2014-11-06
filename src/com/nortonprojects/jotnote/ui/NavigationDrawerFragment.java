@@ -22,7 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.nortonprojects.quicknotes.R;
+import com.nortonprojects.jotnote.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation

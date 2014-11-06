@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.nortonprojects.jotnote.bl.JotNotesManager;
-import com.nortonprojects.quicknotes.R;
+import com.nortonprojects.jotnote.R;
 
 public class SettingsFragment extends Fragment implements OnClickListener
 {

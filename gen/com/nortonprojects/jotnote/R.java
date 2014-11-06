@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.nortonprojects.quicknotes;
+package com.nortonprojects.jotnote;
 
 public final class R {
     public static final class attr {

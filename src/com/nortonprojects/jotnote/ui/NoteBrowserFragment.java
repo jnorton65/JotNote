@@ -16,7 +16,7 @@ import com.nortonprojects.jotnote.bl.JotNotesManager;
 import com.nortonprojects.jotnote.bl.NoteListAdapter;
 import com.nortonprojects.jotnote.bo.NoteInfo;
 import com.nortonprojects.jotnote.ui.SwipeDismissListViewTouchListener.DismissCallbacks;
-import com.nortonprojects.quicknotes.R;
+import com.nortonprojects.jotnote.R;
 
 public class NoteBrowserFragment extends Fragment implements OnItemClickListener, OnClickListener
 {

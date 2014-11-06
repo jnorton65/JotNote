@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.nortonprojects.jotnote.bo.NoteInfo;
 import com.nortonprojects.jotnote.ui.MainActivity;
-import com.nortonprojects.quicknotes.R;
+import com.nortonprojects.jotnote.R;
 
 public class NoteListAdapter extends BaseAdapter
 {
