@@ -1,3 +1,3 @@
 ### Who do I talk to? ###
 
-If you need to contact me, you can go to [nortonprojects.com](nortonprojects.com) or email me at [jacob.norton@nortonprojects.com](mailto:jacob.norton@nortonprojects.com)
+If you need to contact me, you can go to [nortonprojects.com](www.nortonprojects.com) or email me at [jacob.norton@nortonprojects.com](mailto:jacob.norton@nortonprojects.com)
